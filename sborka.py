@@ -44,8 +44,9 @@ def main():
     spreadsheetId = '1_gOKbuA_be_TI_aeW4KlxX0PGuY1uVwuIaR2ispp7fQ'
     gc = gspread.authorize(credentials)
     sht1 = gc.open_by_key(spreadsheetId)
-    worksheets=sht1.worksheets()
-    print(worksheets)
+    worksheets=sht1.get_worksheet(0)
+    values_list = worksheets.col_values(1)
+    print(values_list)
 
     # sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheetId).execute()
     # print(sheet_metadata)
